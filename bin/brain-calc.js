@@ -2,4 +2,4 @@
 import start from '../src/index.js';
 
 console.log('Welcome to the Brain Games!');
-console.log(start('brain-even'));
+console.log(start('brain-calc'));

@@ -1,5 +1,5 @@
 import name from './cli.js';
-import { parityCheck, calc } from './games/games.js';
+import { parityCheck, calc, gcd } from './games/games.js';
 
 const start = (game) => {
   const userName = name();
@@ -15,6 +15,10 @@ const start = (game) => {
       playGame = calc;
       rule = 'What is the result of the expression?';
       break;
+    case 'brain-gcd':
+      playGame = gcd;
+      rule = 'Find the greatest common divisor of given numbers.';
+      break;
     default:
       return 'something wrong';
   }
@@ -22,7 +26,7 @@ const start = (game) => {
   let counter = 0;
   let result;
   while (counter < 3) {
-    result = playGame(); // убрать result?
+    result = playGame();
     if (result[0] === false) {
       return `'${result[1]}' is wrong answer ;(. Correct answer was '${result[2]}'.\nLet's try again, ${userName}!`;
     }

@@ -40,3 +40,20 @@ export const calc = () => {
   userAnswer = Number(userAnswer);
   return (userAnswer !== answer) ? [false, userAnswer, answer] : [true, userAnswer, answer];
 };
+
+export const gcd = () => {
+  let a = getRandomNum(1, 30);
+  let b = getRandomNum(1, 30);
+  const question = `${a} ${b}`;
+  let userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
+  while (a !== b) {
+    if (a > b) {
+      a -= b;
+    } else {
+      b -= a;
+    }
+  }
+  const answer = a;
+  userAnswer = Number(userAnswer);
+  return (userAnswer !== answer) ? [false, userAnswer, answer] : [true, userAnswer, answer];
+};

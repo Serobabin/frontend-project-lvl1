@@ -1,5 +1,7 @@
 import name from './cli.js';
-import { parityCheck, calc, gcd } from './games/games.js';
+import {
+  parityCheck, calc, gcd, progression,
+} from './games/games.js';
 
 const start = (game) => {
   const userName = name();
@@ -18,6 +20,10 @@ const start = (game) => {
     case 'brain-gcd':
       playGame = gcd;
       rule = 'Find the greatest common divisor of given numbers.';
+      break;
+    case 'brain-progression':
+      playGame = progression;
+      rule = 'What number is missing in the progression?';
       break;
     default:
       return 'something wrong';

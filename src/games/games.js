@@ -1,13 +1,12 @@
 import readlineSync from 'readline-sync';
 
-const isEven = (n) => (n % 2 === 0 ? 'yes' : 'no');
-
 const getRandomNum = (a, b) => {
   const min = Math.ceil(a);
   const max = Math.floor(b);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 export const parityCheck = () => {
+  const isEven = (n) => (n % 2 === 0 ? 'yes' : 'no');
   const question = getRandomNum(0, 100);
   const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
   const answer = isEven(question);
@@ -36,8 +35,8 @@ export const calc = () => {
     default:
       return 'something wrong with calc';
   }
-  let userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
-  userAnswer = Number(userAnswer);
+  const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
+  answer = String(answer);
   return (userAnswer !== answer) ? [false, userAnswer, answer] : [true, userAnswer, answer];
 };
 
@@ -45,7 +44,7 @@ export const gcd = () => {
   let a = getRandomNum(1, 30);
   let b = getRandomNum(1, 30);
   const question = `${a} ${b}`;
-  let userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
+  const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
   while (a !== b) {
     if (a > b) {
       a -= b;
@@ -53,8 +52,7 @@ export const gcd = () => {
       b -= a;
     }
   }
-  const answer = a;
-  userAnswer = Number(userAnswer);
+  const answer = String(a);
   return (userAnswer !== answer) ? [false, userAnswer, answer] : [true, userAnswer, answer];
 };
 

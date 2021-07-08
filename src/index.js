@@ -1,6 +1,6 @@
 import name from './cli.js';
 import {
-  parityCheck, calc, gcd, progression,
+  parityCheck, calc, gcd, progression, prime,
 } from './games/games.js';
 
 const start = (game) => {
@@ -24,6 +24,10 @@ const start = (game) => {
     case 'brain-progression':
       playGame = progression;
       rule = 'What number is missing in the progression?';
+      break;
+    case 'brain-prime':
+      playGame = prime;
+      rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
       break;
     default:
       return 'something wrong';

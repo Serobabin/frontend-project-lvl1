@@ -1,11 +1,12 @@
-import name from './cli.js';
-import {
-  parityCheck, calc, gcd, progression, prime,
-} from './games/games.js';
+import greeting from './cli.js';
+import parityCheck from './games/even.js';
+import calc from './games/calc.js';
+import gcd from './games/gcd.js';
+import progression from './games/progression.js';
+import prime from './games/prime.js';
 
 const start = (game) => {
-  const userName = name();
-  console.log(`Hello, ${userName}!`);
+  const userName = greeting();
   let rule;
   let playGame;
   switch (game) {

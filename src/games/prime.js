@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import getRandomNum from '../RandomNum.js';
 
 const prime = () => {
@@ -15,7 +14,6 @@ const prime = () => {
     return 'yes';
   };
   const answer = isPrime(question);
-  const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
-  return (userAnswer !== answer) ? [false, userAnswer, answer] : [true, userAnswer, answer];
+  return [question, answer];
 };
 export default prime;

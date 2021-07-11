@@ -1,3 +1,4 @@
+import readlineSync from 'readline-sync';
 import greeting from './cli.js';
 import parityCheck from './games/even.js';
 import calc from './games/calc.js';
@@ -38,8 +39,11 @@ const start = (game) => {
   let result;
   while (counter < 3) {
     result = playGame();
-    if (result[0] === false) {
-      return `'${result[1]}' is wrong answer ;(. Correct answer was '${result[2]}'.\nLet's try again, ${userName}!`;
+    const question = result[0];
+    const answer = String(result[1]);
+    const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
+    if (userAnswer !== answer) {
+      return `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`;
     }
     counter += 1;
     console.log('Correct!');

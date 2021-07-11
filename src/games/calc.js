@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import getRandomNum from '../RandomNum.js';
 
 const calc = () => {
@@ -23,8 +22,6 @@ const calc = () => {
     default:
       return 'something wrong with calc';
   }
-  const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
-  answer = String(answer);
-  return (userAnswer !== answer) ? [false, userAnswer, answer] : [true, userAnswer, answer];
+  return [question, answer];
 };
 export default calc;

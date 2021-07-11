@@ -1,4 +1,3 @@
-import readlineSync from 'readline-sync';
 import getRandomNum from '../RandomNum.js';
 
 const progression = () => {
@@ -16,11 +15,9 @@ const progression = () => {
       result.push(y);
     }
   }
-  let answer = result[hiddenElement];
+  const answer = result[hiddenElement];
   result[hiddenElement] = '..';
   const question = `${result[0]} ${result[1]} ${result[2]} ${result[3]} ${result[4]} ${result[5]} ${result[6]} ${result[7]} ${result[8]} ${result[9]}`;
-  const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
-  answer = String(answer);
-  return (userAnswer !== answer) ? [false, userAnswer, answer] : [true, userAnswer, answer];
+  return [question, answer];
 };
 export default progression;

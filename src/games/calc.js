@@ -1,27 +1,18 @@
-import getRandomNum from '../RandomNum.js';
-
-const calc = () => {
-  const a = getRandomNum(0, 30);
-  const b = getRandomNum(0, 30);
-  const operator = getRandomNum(0, 2);
-  let question;
-  let answer;
+const calc = (operand1, operator, operand2) => {
+  let result;
   switch (operator) {
-    case 0:
-      question = `${a} + ${b}`;
-      answer = a + b;
+    case '+':
+      result = operand1 + operand2;
       break;
-    case 1:
-      question = a >= b ? `${a} - ${b}` : `${b} - ${a}`;
-      answer = a >= b ? a - b : b - a;
+    case '-':
+      result = operand1 - operand2;
       break;
-    case 2:
-      question = `${a} * ${b}`;
-      answer = a * b;
+    case '*':
+      result = operand1 * operand2;
       break;
     default:
       return 'something wrong with calc';
   }
-  return [question, answer];
+  return result;
 };
 export default calc;

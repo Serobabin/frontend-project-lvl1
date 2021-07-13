@@ -1,23 +1,28 @@
-import getRandomNum from '../RandomNum.js';
-
-const progression = () => {
+export const getProgression = (stepOfProgression, startOfProgression) => {
   const lengthOfProgression = 10;
-  const stepOfProgression = getRandomNum(1, 10);
-  const startOfProgression = getRandomNum(1, 25);
-  const hiddenElement = getRandomNum(0, 9);
-  let y = 0;
-  const result = [];
+  const numbers = [];
   for (let i = 0; i < lengthOfProgression; i += 1) {
     if (i === 0) {
-      result.push(startOfProgression);
+      numbers.push(startOfProgression);
     } else {
-      y = result[i - 1] + stepOfProgression;
-      result.push(y);
+      numbers.push(numbers[i - 1] + stepOfProgression);
     }
   }
-  const answer = result[hiddenElement];
-  result[hiddenElement] = '..';
-  const question = `${result[0]} ${result[1]} ${result[2]} ${result[3]} ${result[4]} ${result[5]} ${result[6]} ${result[7]} ${result[8]} ${result[9]}`;
-  return [question, answer];
+  return numbers;
 };
-export default progression;
+
+export const getHiddenElement = (array, hiddenElement) => {
+  const resultArray = array;
+  resultArray[hiddenElement] = '..';
+  return resultArray;
+};
+
+export const getStringFromArray = (array) => {
+  let str = '';
+  let element;
+  for (let i = 0; i < array.length; i += 1) {
+    element = array[i];
+    str += `${element} `;
+  }
+  return str;
+};

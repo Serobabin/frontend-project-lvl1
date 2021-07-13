@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import start from '../src/index.js';
+import getStart from '../src/index.js';
 
-console.log(start('brain-progression'));
+console.log(getStart('brain-progression'));

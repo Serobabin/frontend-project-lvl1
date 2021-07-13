@@ -4,12 +4,12 @@
 [![Node CI](https://github.com/Serobabin/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/Serobabin/frontend-project-lvl1/actions)
 
 
- https://asciinema.org/a/YEUqvD4WnmGlzvaU6dqo5IoZz
+ brain-even: https://asciinema.org/a/YEUqvD4WnmGlzvaU6dqo5IoZz
 
- https://asciinema.org/a/pwSNa5xVbOWApmAHTMPuyOOYK
+ brain-calc: https://asciinema.org/a/0bI1bav3SQkF5WdbqJ9fJqXUN
 
- https://asciinema.org/a/tjahPZYBpmKVKvRqMBRfw80bE
+ brain-gcd: https://asciinema.org/a/tjahPZYBpmKVKvRqMBRfw80bE
 
- https://asciinema.org/a/pYkJ7MujdiskMKANafmlfFc5Y
+ brain-progression: https://asciinema.org/a/vL0808WuHDEL7ANYYDYbwgAwK
  
- https://asciinema.org/a/OdJUSLVe3Qy0atshcsBQppqpP
+ brain-prime: https://asciinema.org/a/OdJUSLVe3Qy0atshcsBQppqpP

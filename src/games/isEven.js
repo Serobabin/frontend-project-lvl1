@@ -1,2 +1,11 @@
+import getRandomNum from '../getRandomNum.js';
+
 const isEven = (number) => number % 2 === 0;
-export default isEven;
+
+const brainEven = () => {
+  const number = getRandomNum(0, 100);
+  const answer = isEven(number) ? 'yes' : 'no';
+  const question = `${number}`;
+  return [question, answer];
+};
+export default brainEven;

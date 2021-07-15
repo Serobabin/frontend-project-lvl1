@@ -1,3 +1,5 @@
+import getRandomNum from '../getRandomNum.js';
+
 const isPrime = (number) => {
   if (number < 2) {
     return false;
@@ -9,4 +11,10 @@ const isPrime = (number) => {
   }
   return true;
 };
-export default isPrime;
+const brainPrime = () => {
+  const number1 = getRandomNum(0, 100);
+  const answer = isPrime(number1) ? 'yes' : 'no';
+  const question = `${number1}`;
+  return [question, answer];
+};
+export default brainPrime;

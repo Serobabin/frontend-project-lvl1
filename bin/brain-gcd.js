@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import getStart from '../src/index.js';
-import brainProgression from '../src/games/progression.js';
+import brainGcd from '../src/games/getGcd.js';
 
-console.log(getStart('brain-gcd', brainProgression));
+console.log(getStart('brain-gcd', brainGcd));

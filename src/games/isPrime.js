@@ -1,4 +1,5 @@
-import getRandomNum from '../getRandomNum.js';
+import generateRandomNum from '../generateRandomNum.js';
+import play from '../index.js';
 
 const isPrime = (number) => {
   if (number < 2) {
@@ -12,9 +13,17 @@ const isPrime = (number) => {
   return true;
 };
 const brainPrime = () => {
-  const number1 = getRandomNum(0, 100);
-  const answer = isPrime(number1) ? 'yes' : 'no';
-  const question = `${number1}`;
-  return [question, answer];
+  const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const questions = [];
+  const answers = [];
+  const maxIteration = 3;
+  for (let i = 0; i < maxIteration; i += 1) {
+    const number = generateRandomNum();
+    const answer = isPrime(number) ? 'yes' : 'no';
+    const question = `${number}`;
+    questions.push(question);
+    answers.push(answer);
+  }
+  play(rule, questions, answers);
 };
 export default brainPrime;

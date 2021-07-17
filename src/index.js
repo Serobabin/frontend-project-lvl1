@@ -1,43 +1,31 @@
 import readlineSync from 'readline-sync';
-import greeting from './cli.js';
 
-const getStart = (game, functionName) => {
+const play = (rule, questions, answers) => {
   console.log('Welcome to the Brain Games!');
-  const userName = greeting();
-  let rule;
-  switch (game) {
-    case 'brain-even':
-      rule = 'Answer "yes" if the number is even, otherwise answer "no".';
-      break;
-    case 'brain-calc':
-      rule = 'What is the result of the expression?';
-      break;
-    case 'brain-gcd':
-      rule = 'Find the greatest common divisor of given numbers.';
-      break;
-    case 'brain-progression':
-      rule = 'What number is missing in the progression?';
-      break;
-    case 'brain-prime':
-      rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-      break;
-    default:
-      return 'something wrong';
-  }
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
   console.log(rule);
+  const maxRounds = 3;
   let counter = 0;
-  let result;
-  while (counter < 3) {
-    result = functionName();
-    const question = result[0];
-    const answer = result[1];
-    const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
-    if (userAnswer !== result[1]) {
-      return `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`;
+  let question;
+  let answer;
+  let userAnswer;
+  let correctAnswer = 0;
+  while (counter < maxRounds) {
+    question = questions[counter];
+    answer = answers[counter];
+    userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
+    if (userAnswer !== answer) {
+      break;
     }
     counter += 1;
     console.log('Correct!');
+    correctAnswer += 1;
   }
-  return `Congratulations, ${userName}!`;
+  if (correctAnswer < 3) {
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`);
+  } else {
+    console.log(`Congratulations, ${userName}!`);
+  }
 };
-export default getStart;
+export default play;

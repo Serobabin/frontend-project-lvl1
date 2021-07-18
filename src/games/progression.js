@@ -1,5 +1,5 @@
 import generateRandomNum from '../generateRandomNum.js';
-import play from '../index.js';
+import { play, maxRounds } from '../index.js';
 
 const getProgression = (stepOfProgression, startOfProgression) => {
   const lengthOfProgression = 10;
@@ -29,21 +29,18 @@ const makeStringFromArray = (array) => {
   }
   return str;
 };
+const rule = 'What number is missing in the progression?';
 const brainProgression = () => {
-  const rule = 'What number is missing in the progression?';
-  const questions = [];
-  const answers = [];
-  const maxIteration = 3;
-  for (let i = 0; i < maxIteration; i += 1) {
-    const stepOfProgression = generateRandomNum() + 1;
-    const startOfProgression = generateRandomNum();
+  const gameData = [];
+  for (let i = 0; i < maxRounds; i += 1) {
+    const stepOfProgression = generateRandomNum(1, 20);
+    const startOfProgression = generateRandomNum(0, 50);
     const progression = getProgression(stepOfProgression, startOfProgression);
     const hiddenNumber = Math.floor(Math.random() * progression.length);
     const answer = `${progression[hiddenNumber]}`;
     const question = `${makeStringFromArray(hideElement(progression, hiddenNumber))}`;
-    questions.push(question);
-    answers.push(answer);
+    gameData.push([question, answer]);
   }
-  play(rule, questions, answers);
+  play(rule, gameData);
 };
 export default brainProgression;

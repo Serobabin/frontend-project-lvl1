@@ -1,5 +1,5 @@
 import generateRandomNum from '../generateRandomNum.js';
-import play from '../index.js';
+import { play, maxRounds } from '../index.js';
 
 const calc = (operand1, operator, operand2) => {
   let result;
@@ -18,22 +18,18 @@ const calc = (operand1, operator, operand2) => {
   }
   return result;
 };
-
+const rule = 'What is the result of the expression?';
 const brainCalc = () => {
-  const rule = 'What is the result of the expression?';
   const operators = ['+', '-', '*'];
-  const questions = [];
-  const answers = [];
-  const maxIteration = 3;
-  for (let i = 0; i < maxIteration; i += 1) {
-    const number1 = generateRandomNum();
-    const number2 = generateRandomNum();
+  const gameData = [];
+  for (let i = 0; i < maxRounds; i += 1) {
+    const number1 = generateRandomNum(0, 25);
+    const number2 = generateRandomNum(0, 25);
     const operator = operators[Math.floor(Math.random() * operators.length)];
     const answer = `${calc(number1, operator, number2)}`;
     const question = `${number1} ${operator} ${number2}`;
-    questions.push(question);
-    answers.push(answer);
+    gameData.push([question, answer]);
   }
-  play(rule, questions, answers);
+  play(rule, gameData);
 };
 export default brainCalc;

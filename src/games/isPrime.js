@@ -1,5 +1,5 @@
 import generateRandomNum from '../generateRandomNum.js';
-import play from '../index.js';
+import { play, maxRounds } from '../index.js';
 
 const isPrime = (number) => {
   if (number < 2) {
@@ -12,18 +12,15 @@ const isPrime = (number) => {
   }
   return true;
 };
+const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 const brainPrime = () => {
-  const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const questions = [];
-  const answers = [];
-  const maxIteration = 3;
-  for (let i = 0; i < maxIteration; i += 1) {
-    const number = generateRandomNum();
+  const gameData = [];
+  for (let i = 0; i < maxRounds; i += 1) {
+    const number = generateRandomNum(0, 100);
     const answer = isPrime(number) ? 'yes' : 'no';
     const question = `${number}`;
-    questions.push(question);
-    answers.push(answer);
+    gameData.push([question, answer]);
   }
-  play(rule, questions, answers);
+  play(rule, gameData);
 };
 export default brainPrime;

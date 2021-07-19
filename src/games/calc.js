@@ -1,6 +1,8 @@
 import generateRandomNum from '../generateRandomNum.js';
 import { play, maxRounds } from '../index.js';
 
+const rule = 'What is the result of the expression?';
+
 const calc = (operand1, operator, operand2) => {
   let result;
   switch (operator) {
@@ -18,17 +20,21 @@ const calc = (operand1, operator, operand2) => {
   }
   return result;
 };
-const rule = 'What is the result of the expression?';
-const brainCalc = () => {
+
+const makeGameDataCalc = () => {
   const operators = ['+', '-', '*'];
+  const number1 = generateRandomNum(0, 25);
+  const number2 = generateRandomNum(0, 25);
+  const operator = operators[Math.floor(Math.random() * operators.length)];
+  const answer = `${calc(number1, operator, number2)}`;
+  const question = `${number1} ${operator} ${number2}`;
+  return [question, answer];
+};
+
+const brainCalc = () => {
   const gameData = [];
   for (let i = 0; i < maxRounds; i += 1) {
-    const number1 = generateRandomNum(0, 25);
-    const number2 = generateRandomNum(0, 25);
-    const operator = operators[Math.floor(Math.random() * operators.length)];
-    const answer = `${calc(number1, operator, number2)}`;
-    const question = `${number1} ${operator} ${number2}`;
-    gameData.push([question, answer]);
+    gameData.push(makeGameDataCalc());
   }
   play(rule, gameData);
 };

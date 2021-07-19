@@ -1,6 +1,8 @@
 import generateRandomNum from '../generateRandomNum.js';
 import { play, maxRounds } from '../index.js';
 
+const rule = 'Find the greatest common divisor of given numbers.';
+
 const getGcd = (value1, value2) => {
   let number1 = value1;
   let number2 = value2;
@@ -19,15 +21,19 @@ const getGcd = (value1, value2) => {
   }
   return number1;
 };
-const rule = 'Find the greatest common divisor of given numbers.';
+
+const makeGameDataGcd = () => {
+  const number1 = generateRandomNum(0, 100);
+  const number2 = generateRandomNum(0, 100);
+  const answer = `${getGcd(number1, number2)}`;
+  const question = `${number1} ${number2}`;
+  return [question, answer];
+};
+
 const brainGcd = () => {
   const gameData = [];
   for (let i = 0; i < maxRounds; i += 1) {
-    const number1 = generateRandomNum(0, 100);
-    const number2 = generateRandomNum(0, 100);
-    const answer = `${getGcd(number1, number2)}`;
-    const question = `${number1} ${number2}`;
-    gameData.push([question, answer]);
+    gameData.push(makeGameDataGcd());
   }
   play(rule, gameData);
 };

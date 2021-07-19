@@ -1,6 +1,8 @@
 import generateRandomNum from '../generateRandomNum.js';
 import { play, maxRounds } from '../index.js';
 
+const rule = 'What number is missing in the progression?';
+
 const getProgression = (stepOfProgression, startOfProgression) => {
   const lengthOfProgression = 10;
   const numbers = [];
@@ -29,17 +31,21 @@ const makeStringFromArray = (array) => {
   }
   return str;
 };
-const rule = 'What number is missing in the progression?';
+
+const makeGameDataprogression = () => {
+  const stepOfProgression = generateRandomNum(1, 20);
+  const startOfProgression = generateRandomNum(0, 50);
+  const progression = getProgression(stepOfProgression, startOfProgression);
+  const hiddenNumber = Math.floor(Math.random() * progression.length);
+  const answer = `${progression[hiddenNumber]}`;
+  const question = `${makeStringFromArray(hideElement(progression, hiddenNumber))}`;
+  return [question, answer];
+};
+
 const brainProgression = () => {
   const gameData = [];
   for (let i = 0; i < maxRounds; i += 1) {
-    const stepOfProgression = generateRandomNum(1, 20);
-    const startOfProgression = generateRandomNum(0, 50);
-    const progression = getProgression(stepOfProgression, startOfProgression);
-    const hiddenNumber = Math.floor(Math.random() * progression.length);
-    const answer = `${progression[hiddenNumber]}`;
-    const question = `${makeStringFromArray(hideElement(progression, hiddenNumber))}`;
-    gameData.push([question, answer]);
+    gameData.push(makeGameDataprogression());
   }
   play(rule, gameData);
 };

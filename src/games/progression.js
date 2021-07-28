@@ -3,8 +3,7 @@ import { play, maxRounds } from '../index.js';
 
 const rule = 'What number is missing in the progression?';
 
-const getProgression = (stepOfProgression, startOfProgression) => {
-  const lengthOfProgression = 10;
+const getProgression = (stepOfProgression, startOfProgression, lengthOfProgression) => {
   const numbers = [];
   for (let i = 0; i < lengthOfProgression; i += 1) {
     if (i === 0) {
@@ -22,23 +21,14 @@ const hideElement = (array, hiddenElement) => {
   return resultArray;
 };
 
-const makeStringFromArray = (array) => {
-  let str = '';
-  let element;
-  for (let i = 0; i < array.length; i += 1) {
-    element = array[i];
-    str += `${element} `;
-  }
-  return str;
-};
-
 const makeGameDataprogression = () => {
   const stepOfProgression = generateRandomNum(1, 20);
   const startOfProgression = generateRandomNum(0, 50);
-  const progression = getProgression(stepOfProgression, startOfProgression);
+  const lengthOfProgression = generateRandomNum(5, 10);
+  const progression = getProgression(stepOfProgression, startOfProgression, lengthOfProgression);
   const hiddenNumber = Math.floor(Math.random() * progression.length);
   const answer = `${progression[hiddenNumber]}`;
-  const question = `${makeStringFromArray(hideElement(progression, hiddenNumber))}`;
+  const question = `${hideElement(progression, hiddenNumber).join(' ')}`;
   return [question, answer];
 };
 

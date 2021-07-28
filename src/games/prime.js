@@ -18,7 +18,7 @@ const isPrime = (number) => {
 const makeGameDataPrime = () => {
   const number = generateRandomNum(0, 100);
   const answer = isPrime(number) ? 'yes' : 'no';
-  const question = `${number}`;
+  const question = String(number);
   return [question, answer];
 };
 

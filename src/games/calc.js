@@ -25,7 +25,7 @@ const makeGameDataCalc = () => {
   const operators = ['+', '-', '*'];
   const number1 = generateRandomNum(0, 25);
   const number2 = generateRandomNum(0, 25);
-  const operator = operators[Math.floor(Math.random() * operators.length)];
+  const operator = operators[generateRandomNum(0, 2)];
   const answer = `${calc(number1, operator, number2)}`;
   const question = `${number1} ${operator} ${number2}`;
   return [question, answer];

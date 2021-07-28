@@ -7,9 +7,9 @@ export const play = (rule, gameData) => {
   console.log(`Hello, ${userName}!`);
   console.log(rule);
   /* eslint-disable-next-line */
-  for (const data of gameData) {
-    const question = data[0];
-    const answer = data[1];
+  for (const [dataQuestion, dataAnswer] of gameData) {
+    const question = dataQuestion;
+    const answer = dataAnswer;
     const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
     if (userAnswer !== answer) {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`);
